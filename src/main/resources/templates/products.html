@@ -1,23 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Products</title>
 </head>
 <body>
-<h1>Product List</h1>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Usage Instructions</th>
-        <th>Safety Precautions</th>
-    </tr>
-    <tr th:each="product : ${products}">
-        <td th:text="${product.name}">Name</td>
-        <td th:text="${product.description}">Description</td>
-        <td th:text="${product.usageInstructions}">Usage Instructions</td>
-        <td th:text="${product.safetyPrecautions}">Safety Precautions</td>
-    </tr>
-</table>
+    <h1>Products</h1>
+    <ul>
+        <th:block th:each="product : ${products}">
+            <li>
+                <a th:href="@{/products/{id}(id=${product.id})}" th:text="${product.name}"></a>
+            </li>
+        </th:block>
+    </ul>
 </body>
 </html>
